@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>BLACKMAGIC CAMERA CONTROL</title>
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+</head>
+<body>
+  <head>
+    <div class="title_header">BLACKMAGIC CAMERA CONTROL</div>
+    <div class="camselect_bar">
+      <ul>
+        <li class="active">CAM 1</li>
+        <li>CAM 2</li>
+        <li>CAM 3</li>
+      </ul>
+    </div>
+  </head>
+
+
+  <div id="container">
+	    <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+	    <label for="tab-1"><i class="fa fa-camera" aria-hidden="true"></i>Camera</label>
+	    <input id="tab-2" type="radio" name="tab-group" />
+	    <label for="tab-2"><i class="fa fa-microphone" aria-hidden="true"></i>Audio</label>
+	    <input id="tab-3" type="radio" name="tab-group" />
+	    <label for="tab-3"><i class="fa fa-television" aria-hidden="true"></i>Monitoring</label>
+	    <input id="tab-4" type="radio" name="tab-group" />
+	    <label for="tab-4"><i class="fa fa-sliders" aria-hidden="true"></i>Setup</label>
+	    <input id="tab-5" type="radio" name="tab-group" />
+	    <label for="tab-5"><i class="fa fa-adjust" aria-hidden="true"></i>Color</label>
+	    <div id="content">
+	        <div id="content-1" class="tab-content">
+	        </div>
+	        <div id="content-2" class="tab-content">
+	        </div>
+	        <div id="content-3" class="tab-content">
+	        </div>
+          <div id="content-4" class="tab-content">
+          </div>
+          <div id="content-5" class="tab-content">
+          </div>
+	    </div>
+	</div>
+</body>
+</html>

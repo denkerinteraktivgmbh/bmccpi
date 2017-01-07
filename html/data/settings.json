@@ -1,0 +1,1051 @@
+{
+   "cameras":[
+      {
+         "id":1,
+         "name":"Kamera 1",
+         "ip":"192.168.2.1",
+         "settings":[
+            {
+               "id":0,
+               "name":"lens",
+               "label":"Lens",
+               "params":[
+                  {
+                     "id":0,
+                     "name":"focus",
+                     "label":"Focus",
+                     "comment":"0.0=near, 1.0=far",
+                     "value":0.5,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "fieldtype":"counter",
+                     "inactive":0,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":1,
+                     "name":"instaneous-autofocus",
+                     "label":"Instantaneous autofocus",
+                     "comment":"trigger instantaneous autofocus",
+                     "button_label": "FOCUS",
+                     "fieldtype":"bang",
+                     "inactive":0,
+                     "datatype":"void"
+                  },
+                  {
+                     "id":2,
+                     "name":"aperture-f-stop",
+                     "label":"Aperture (f-stop)",
+                     "comment":"Aperture Value (where fnumber = sqrt(2^AV))",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":-1.0,
+                     "max":16.0,
+                     "default":4.0,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":3,
+                     "name":"aperture-normalised",
+                     "label":"Aperture (normalised)",
+                     "comment":"0.0=smallest, 1.0=largest",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":4,
+                     "name":"aperture-ordinal",
+                     "label":"Aperture (ordinal)",
+                     "comment":"Steps through available aperture values from minimum (0) to maximum (n)",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "min":0,
+                     "max":20,
+                     "default":1,
+                     "datatype":"int16"
+                  },
+                  {
+                     "id":5,
+                     "name":"instaneous-autoaperture",
+                     "label":"Instantaneous auto aperture",
+                     "comment":"trigger instantaneous auto aperture",
+                     "fieldtype":"bang",
+                     "button_label": "GO",
+                     "inactive":0,
+                     "datatype":"void"
+                  },
+                  {
+                     "id":6,
+                     "name":"optical-image-stabilisation",
+                     "label":"Optical image stabilisation",
+                     "comment":"true=enabled, false=disabled",
+                     "fieldtype":"radio",
+                     "inactive":0,
+                     "datatype":"boolean",
+                     "value":false,
+                     "default":false
+                  },
+                  {
+                     "id":7,
+                     "name":"absolute-zoom",
+                     "label":"Set absolute zoom (mm)",
+                     "comment":"Move to specified focal length in mm, from minimum (0) to maximum (max)",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "min":0,
+                     "max":100,
+                     "default":0,
+                     "datatype":"int16"
+                  },
+                  {
+                     "id":8,
+                     "name":"absolute-zoom-normalised",
+                     "label":"Set absolute zoom (normalised)",
+                     "comment":"Move to specified normalised focal length: 0.0=wide, 1.0=tele",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.5,
+                     "min":-1.0,
+                     "max":1.0,
+                     "default":0.0,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":9,
+                     "name":"continuous-zoom-speed",
+                     "label":"Set continuous zoom (speed)",
+                     "comment":"Start/stop zooming at specified rate: -1.0=zoom wider fast, 0.0=stop, +1.0=zoom tele fast",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.5,
+                     "min":-1.0,
+                     "max":1.0,
+                     "default":0.0,
+                     "datatype":"fixed16"
+                  }
+               ]
+            },
+            {
+               "id":1,
+               "name":"video",
+               "params":[
+                  {
+                     "id":0,
+                     "name":"video-mode",
+                     "label":"Video mode",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"int8array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"frame-rate",
+                           "label":"Framerate",
+                           "comment":"24, 25, 30, 50, 60",
+                           "fieldtype":"radio",
+                           "datatype":"enum",
+                           "inactive":0,
+                           "value":1,
+                           "enum":[
+                              24,
+                              25,
+                              30,
+                              50,
+                              60
+                           ],
+                           "default":2
+                        },
+                        {
+                           "id":1,
+                           "name":"m-rate",
+                           "label":"M-rate",
+                           "comment":"0=regular, 1=M-rate",
+                           "fieldtype":"radio",
+                           "datatype":"enum",
+                           "inactive":0,
+                           "value":1,
+                           "enum":[
+                              0,
+                              1
+                           ],
+                           "default":1
+                        },
+                        {
+                           "id":2,
+                           "name":"dimensions",
+                           "label":"Dimensions",
+                           "comment":"0=NTSC, 1=PAL, 2=720, 3=1080, 4=2k, 5=2k DCI, 6=UHD",
+                           "fieldtype":"radio",
+                           "datatype":"enum",
+                           "inactive":0,
+                           "value":1,
+                           "enum":[
+                              0,
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              6
+                           ],
+                           "default":1
+                        },
+                        {
+                           "id":3,
+                           "name":"interlaced",
+                           "label":"Interlaced",
+                           "comment":"0=progressive, 1=interlaced",
+                           "fieldtype":"radio",
+                           "datatype":"enum",
+                           "inactive":0,
+                           "value":1,
+                           "enum":[
+                              0,
+                              1
+                           ],
+                           "default":1
+                        },
+                        {
+                           "id":4,
+                           "name":"colour-space",
+                           "label":"Colour Space",
+                           "comment":"0=YUV",
+                           "fieldtype":"radio",
+                           "datatype":"enum",
+                           "inactive":0,
+                           "value":1,
+                           "enum":[
+                              0,
+                              1
+                           ],
+                           "default":0
+                        }
+                     ]
+                  },
+                  {
+                     "id":1,
+                     "name":"sensor-gain",
+                     "label":"Sensor Gain",
+                     "comment":"1x, 2x, 4x, 8x, 16x gain",
+                     "fieldtype":"radio",
+                     "datatype":"enum",
+                     "inactive":0,
+                     "value":3,
+                     "enum":[
+                        1,
+                        2,
+                        4,
+                        8,
+                        16
+                     ],
+                     "default":2
+                  },
+                  {
+                     "id":2,
+                     "name":"manual-white-balance",
+                     "label":"Manual White Balance",
+                     "comment":"Colour temperature in K",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":3200,
+                     "min":3200,
+                     "max":7500,
+                     "default":3200,
+                     "datatype":"int16"
+                  },
+                  {
+                     "id":3,
+                     "name":"reserved",
+                     "label":"",
+                     "comment":"",
+                     "fieldtype":"range",
+                     "inactive":1,
+                     "value":0
+                  },
+                  {
+                     "id":4,
+                     "name":"reserved",
+                     "label":"",
+                     "comment":"",
+                     "fieldtype":"range",
+                     "inactive":1,
+                     "value":0
+                  },
+                  {
+                     "id":5,
+                     "name":"exposure-us",
+                     "label":"Exposure (us)",
+                     "comment":"time in us",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "min":0,
+                     "max":42000,
+                     "default":0,
+                     "datatype":"int32"
+                  },
+                  {
+                     "id":6,
+                     "name":"exposure-ordinal",
+                     "label":"Exposure (ordinal)",
+                     "comment":"Steps through available exposure values from minimum (0) to maximum (n)",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "min":0,
+                     "max":100,
+                     "default":0,
+                     "datatype":"int16"
+                  },
+                  {
+                     "id":7,
+                     "name":"dynamic-range-mode",
+                     "label":"Dynamic Range Mode",
+                     "comment":"0 = film, 1 = video",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "values":[
+                        0,
+                        1
+                     ],
+                     "default":0,
+                     "datatype":"int8enum"
+                  },
+                  {
+                     "id":8,
+                     "name":"video-sharpening-level",
+                     "label":"Video sharpening level",
+                     "comment":"0=Off, 1=Low, 2=Medium, 3=High",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "values":[
+                        0,
+                        1,
+                        2,
+                        3
+                     ],
+                     "default":0,
+                     "datatype":"int8enum"
+                  }
+               ]
+            },
+            {
+               "id":2,
+               "name":"audio",
+               "label":"Audio",
+               "comment":"",
+               "inactive":0,
+               "params":[
+                  {
+                     "id":0,
+                     "name":"mic-level",
+                     "label":"Mic level",
+                     "comment":"0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.5,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":1,
+                     "name":"headphone-level",
+                     "label":"Headphone level",
+                     "comment":"0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.8,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":2,
+                     "name":"headphone-program-mix",
+                     "label":"Headphone program mix",
+                     "comment":"0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.5,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":3,
+                     "name":"speaker-level",
+                     "label":"Speaker level",
+                     "comment":"0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.9,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":4,
+                     "name":"input-type",
+                     "label":"Input type",
+                     "comment":"0=internal mic, 1=line level input, 2=low mic level input, 3=high mic level input",
+                     "fieldtype":"enum",
+                     "inactive":0,
+                     "value":0,
+                     "values":[
+                        0,
+                        1,
+                        2,
+                        3
+                     ],
+                     "default":0,
+                     "datatype":"int8enum"
+                  },
+                  {
+                     "id":5,
+                     "name":"input-levels",
+                     "label":"Input levels",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"fixed16array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"ch0",
+                           "label":"Channel 0",
+                           "comment":"0.0=minimum, 1.0=maximum",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.5,
+                           "min":0.0,
+                           "max":1.0,
+                           "default":0.5,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":1,
+                           "name":"ch1",
+                           "label":"Channel 1",
+                           "comment":"0.0=minimum, 1.0=maximum",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.8,
+                           "min":0.0,
+                           "max":1.0,
+                           "default":0.5,
+                           "datatype":"fixed16"
+                        }
+                     ]
+                  },
+                  {
+                     "id":6,
+                     "name":"phantom-power",
+                     "label":"Phantom power",
+                     "comment":"",
+                     "fieldtype":"radio",
+                     "inactive":0,
+                     "datatype":"boolean",
+                     "value":false,
+                     "default":false
+                  }
+               ]
+            },
+            {
+               "id":3,
+               "name":"output",
+               "label":"",
+               "comment":"",
+               "fieldtype":"range",
+               "inactive":0,
+               "params":[
+                  {
+                     "id":0,
+                     "name":"overlay",
+                     "label":"Overlays",
+                     "comment":"0x1 = display status 0x2 = display guides Some cameras don’t allow separate control of guides and status overlays.",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"uint16bitfield"
+                  }
+               ]
+            },
+            {
+               "id":4,
+               "name":"display",
+               "label":"Display",
+               "comment":"",
+               "inactive":0,
+               "params":[
+                  {
+                     "id":0,
+                     "name":"brightness",
+                     "label":"Brightness",
+                     "comment":"0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":1,
+                     "name":"overlays",
+                     "label":"Overlays",
+                     "comment":"0x4 = zebra 0x8 = peaking",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"uint16bitfield"
+                  },
+                  {
+                     "id":2,
+                     "name":"zebra-level",
+                     "label":"Zebra level",
+                     "comment":"0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":3,
+                     "name":"peaking-level",
+                     "label":"Peaking level",
+                     "comment":"0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":4,
+                     "name":"colour-bars",
+                     "label":"Colour bars display time (seconds)",
+                     "comment":"0=disable bars, 1-30=enable bars with timeout (s)",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "min":0,
+                     "max":30,
+                     "default":5,
+                     "datatype":"int8"
+                  }
+               ]
+            },
+            {
+               "id":5,
+               "name":"tally",
+               "label":"",
+               "comment":"",
+               "fieldtype":"range",
+               "inactive":0,
+               "params":[
+                  {
+                     "id":0,
+                     "name":"brightness",
+                     "label":"Tally brightness",
+                     "comment":"Sets the tally front and tally rear brightness to the same level. 0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":1,
+                     "name":"front-brightness",
+                     "label":"Tally front brightness",
+                     "comment":"Sets the tally front brightness. 0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":2,
+                     "name":"rear-brightness",
+                     "label":"Tally rear brightness",
+                     "comment":"Sets the tally rear brightness. 0.0=minimum, 1.0=maximum",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":0.5,
+                     "datatype":"fixed16"
+                  }
+               ]
+            },
+            {
+               "id":6,
+               "name":"reference",
+               "label":"",
+               "comment":"",
+               "fieldtype":"range",
+               "inactive":0,
+               "params":[
+                  {
+                     "id":0,
+                     "name":"source",
+                     "label":"Source",
+                     "comment":"0=internal, 1=program, 2=external",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "values":[
+                        0,
+                        1,
+                        2
+                     ],
+                     "default":0,
+                     "datatype":"int8enum"
+                  },
+                  {
+                     "id":1,
+                     "name":"offset",
+                     "label":"Offset",
+                     "comment":"+/- offset in pixels",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "min":0,
+                     "max":200,
+                     "default":0,
+                     "datatype":"int32"
+                  }
+               ]
+            },
+            {
+               "id":7,
+               "name":"configuration",
+               "label":"",
+               "comment":"",
+               "inactive":0,
+               "params":[
+                  {
+                     "id":0,
+                     "name":"realtime-clock",
+                     "label":"Real Time Clock",
+                     "comment":"BCD - HHMMSSFF",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0,
+                     "values":[
+                        0,
+                        1,
+                        2
+                     ],
+                     "default":0,
+                     "datatype":"int32"
+                  },
+                  {
+                     "id":1,
+                     "name":"reserved",
+                     "label":"",
+                     "comment":"",
+                     "fieldtype":"range",
+                     "inactive":1,
+                     "value":0
+                  }
+               ]
+            },
+            {
+               "id":8,
+               "name":"color-correction",
+               "label":"",
+               "comment":"",
+               "fieldtype":"range",
+               "inactive":0,
+               "params":[
+                  {
+                     "id":0,
+                     "name":"lift-adjust",
+                     "label":"Lift Adjust",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"fixed16array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"red",
+                           "label":"Red",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-2.0,
+                           "max":2.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":1,
+                           "name":"green",
+                           "label":"Green",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-2.0,
+                           "max":2.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":2,
+                           "name":"blue",
+                           "label":"Blue",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-2.0,
+                           "max":2.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":3,
+                           "name":"luma",
+                           "label":"Luma",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-2.0,
+                           "max":2.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        }
+                     ]
+                  },
+                  {
+                     "id":1,
+                     "name":"gamma-adjust",
+                     "label":"Gamma Adjust",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"fixed16array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"red",
+                           "label":"Red",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-4.0,
+                           "max":4.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":1,
+                           "name":"green",
+                           "label":"Green",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-4.0,
+                           "max":4.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":2,
+                           "name":"blue",
+                           "label":"Blue",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-4.0,
+                           "max":4.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":3,
+                           "name":"luma",
+                           "label":"Luma",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-4.0,
+                           "max":4.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        }
+                     ]
+                  },
+                  {
+                     "id":2,
+                     "name":"gain-adjust",
+                     "label":"Gain Adjust",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"fixed16array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"red",
+                           "label":"Red",
+                           "comment":"default 1.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":0.0,
+                           "max":16.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":1,
+                           "name":"green",
+                           "label":"Green",
+                           "comment":"default 1.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":0.0,
+                           "max":16.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":2,
+                           "name":"blue",
+                           "label":"Blue",
+                           "comment":"default 1.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":0.0,
+                           "max":16.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":3,
+                           "name":"luma",
+                           "label":"Luma",
+                           "comment":"default 1.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":0.0,
+                           "max":16.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        }
+                     ]
+                  },
+                  {
+                     "id":3,
+                     "name":"offset-adjust",
+                     "label":"Offset Adjust",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"fixed16array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"red",
+                           "label":"Red",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-8.0,
+                           "max":8.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":1,
+                           "name":"green",
+                           "label":"Green",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-8.0,
+                           "max":8.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":2,
+                           "name":"blue",
+                           "label":"Blue",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-8.0,
+                           "max":8.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":3,
+                           "name":"luma",
+                           "label":"Luma",
+                           "comment":"default 0.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-8.0,
+                           "max":8.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        }
+                     ]
+                  },
+                  {
+                     "id":4,
+                     "name":"contrast-adjust",
+                     "label":"Contrast Adjust",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"fixed16array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"pivot",
+                           "label":"Pivot",
+                           "comment":"default 0.5",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.5,
+                           "min":0.0,
+                           "max":1.0,
+                           "default":0.5,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":1,
+                           "name":"adj",
+                           "label":"Adj",
+                           "comment":"default 1.0",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.0,
+                           "min":-1.0,
+                           "max":1.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        }
+                     ]
+                  },
+                  {
+                     "id":5,
+                     "name":"luma-mix",
+                     "label":"Luma mix",
+                     "comment":"default 1.0",
+                     "fieldtype":"range",
+                     "inactive":0,
+                     "value":0.0,
+                     "min":0.0,
+                     "max":1.0,
+                     "default":1.0,
+                     "datatype":"fixed16"
+                  },
+                  {
+                     "id":6,
+                     "name":"color-adjust",
+                     "label":"Colour Adjust",
+                     "comment":"",
+                     "fieldtype":"array",
+                     "inactive":0,
+                     "datatype":"fixed16array",
+                     "params":[
+                        {
+                           "id":0,
+                           "name":"hue",
+                           "label":"Hue",
+                           "comment":"",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":0.5,
+                           "min":-1.0,
+                           "max":1.0,
+                           "default":0.0,
+                           "datatype":"fixed16"
+                        },
+                        {
+                           "id":1,
+                           "name":"sat",
+                           "label":"Saturation",
+                           "comment":"",
+                           "fieldtype":"range",
+                           "inactive":0,
+                           "value":1.0,
+                           "min":0.0,
+                           "max":2.0,
+                           "default":1.0,
+                           "datatype":"fixed16"
+                        }
+                     ]
+                  },
+                  {
+                     "id":7,
+                     "name":"correction-reset-default",
+                     "label":"Correction Reset Default",
+                     "comment":"reset to defaults",
+                     "fieldtype":"bang",
+                     "button_label": "RESET",
+                     "inactive":0,
+                     "datatype":"void"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}
