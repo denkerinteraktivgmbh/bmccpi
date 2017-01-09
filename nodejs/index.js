@@ -10,7 +10,18 @@ var http = require('http');
 var i2c = require('i2c');
 var address = 0x6d; // Address of the Board 
 var wire = new i2c(address, {device: '/dev/i2c-1'}); // point to your i2c address, debug provides REPL interface
+wire.write([0x1000 & 0xFF, 0x1000 >> 8,0x01], function(err) {
+	console.log(err);
+});
 
+wire.write([0x1000 & 0xFF, 0x1000 >> 8,0x03], function(err) {
+        console.log(err);
+});
+/*
+wire.readBytes(10, function(err, res) {
+console.log(err + res);
+});
+*/
 var server = http.createServer(function(request, response) {
     console.log((new Date()) + ' Received request for ' + request.url);
     response.writeHead(404);
